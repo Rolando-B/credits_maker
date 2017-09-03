@@ -1,0 +1,82 @@
+<h1>Streamers</h1>
+
+<div id="streamers" class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Présent ?</th>
+        <th>Name</th>
+        <th>Youtube</th>
+        <th>Twitch</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        is="streamer-row"
+        v-for="streamer in streamers"
+        :streamer="streamer">
+      </tr>
+      <tr>
+      <td>
+
+      </td>
+        <td>
+          <input type="text" class="form-control" v-model="streamer.name"><br>
+          <span style="color:red">{{ errors.name }}</span>
+        </td>
+        <td>
+          <input type="text" class="form-control" v-model="streamer.youtube"><br>
+          <span style="color:red">{{ errors.youtube }}</span>
+        </td>
+        <td>
+         <input type="text" class="form-control" v-model="streamer.twitch"><br>
+          <span style="color:red">{{ errors.twitch }}</span>
+        </td>
+        <td><button @click="addStreamer">Add</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="clipboard-btn btn" data-clipboard-action="copy" data-clipboard-target="#rawCredits">
+    Copy to clipboard
+  </button>
+  <textarea id="rawCredits">{{credits}}</textarea>
+</div>
+
+<script type="text/x-template" id="streamer-row">
+  <tr>
+  <td>
+    <input type="checkbox" @click="addList(streamer)" v-bind="streamer">
+  </td>
+    <td>
+      <div v-if="editMode">
+        <input type="text" class="form-control" v-model="streamer.name"><br>
+        <span style="color:red">{{ errors.name }}</span>
+      </div>
+      <div v-else>{{ streamer.name }}</div>
+    </td>
+   <td>
+      <div v-if="editMode">
+        <input type="text" class="form-control" v-model="streamer.youtube"><br>
+        <span style="color:red">{{ errors.youtube }}</span>
+      </div>
+      <div v-else>{{ streamer.youtube }}</div>
+    </td>
+    <td>
+      <div v-if="editMode">
+        <input type="text" class="form-control" v-model="streamer.twitch"><br>
+        <span style="color:red">{{ errors.twitch }}</span>
+      </div>
+      <div v-else>{{ streamer.twitch }}</div>
+    </td>
+    <td>
+      <!-- Save button calls updateEmployee -->
+      <button v-if="editMode" @click="updateStreamer" class="btn btn-success">Save</button>
+      <!-- Edit button puts row into edit mode -->
+      <button v-else @click="editMode = true" class="btn btn-info">Edit</button>
+    </td>
+    <td>
+      <button v-if="!editMode" @click="destroyStreamer" class="btn btn-danger">Remove</button>
+    </td>
+  </tr>
+
+</script>

@@ -1,0 +1,12 @@
+<% if @streamer.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@streamer.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @streamer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

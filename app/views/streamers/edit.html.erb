@@ -1,0 +1,22 @@
+<% provide(:title, "Edit streamer") %>
+<h1>Edit this streamer</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@streamer) do |f| %>
+      <%= render 'shared/error_streamer_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :youtube %>
+      <%= f.text_field :youtube, class: 'form-control' %>
+
+      <%= f.label :twitch %>
+      <%= f.text_field :twitch, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

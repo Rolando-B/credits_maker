@@ -13,5 +13,10 @@
 //= require jquery
 //= require bootstrap
 //= require rails-ujs
-//= require turbolinks
+//= require vue
+//= require vue-router
+//= require vue-resource
+//= require vuex
+//= require clipboard
 //= require_tree .
+

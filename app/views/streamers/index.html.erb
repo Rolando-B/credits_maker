@@ -1,0 +1,15 @@
+<% provide(:title, 'All streamers') %>
+<h1>All streamers</h1>
+
+<ul class="users">
+  <% @streamers.each do |streamer| %>
+    <li>
+        <%= link_to streamer.name, streamer %>
+        <% if current_user.admin? %>
+          | <%= link_to "edit", edit_streamer_path(streamer.id) %>
+          | <%= link_to "delete", streamer, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+        <% end %>
+    </li>
+  <% end %>
+</ul>
